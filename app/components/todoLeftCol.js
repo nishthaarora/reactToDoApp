@@ -1,6 +1,11 @@
 import React from 'react';
-import axios from 'axios';
-
+import { connect } from 'react-redux';
+ 
+ @connect((store)=> {
+     return {
+         list: store.itemsList.list
+     }
+ })
 export default class ToDoLeftCol extends React.Component{
     constructor(props) {
         super(props);
@@ -11,6 +16,7 @@ export default class ToDoLeftCol extends React.Component{
         if(this.props.list) {
             listItem = this.props.list
         }
+        console.log(listItem);
         return(
             <div className="leftCol"> 
                 <h1>todo List</h1>

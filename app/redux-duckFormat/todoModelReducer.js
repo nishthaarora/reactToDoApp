@@ -14,7 +14,7 @@ export default function reducer(state={
 }, action) {
     switch(action.type) {
         case 'TODO_ITEM':
-            return {...state, item:action.payload};
+            return {...state, item: action.payload};
         default:
             return state;
     }

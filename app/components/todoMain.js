@@ -3,20 +3,23 @@ import ToDoModel from './todoModel';
 import ToDoLeftCol from './todoLeftCol';
 import ToDoSidebar from './todoSidebar';
 import ToDoRightNav from './todoRightNav';
+import { itemsList } from '../redux-duckFormat/todoMainReducer';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
+ 
+ @connect((store)=> {
+     return {}
+ })
 export default class ToDoMain extends React.Component {
     constructor(props) {
         super(props)
-        this.state={
-            resArr: ''
-        }
     }
 
     componentDidMount() {
-        var self = this;
+        let self = this;
         axios.get('/api/get').then( (response) => {
-            self.setState({resArr:response.data.data})
+            self.props.dispatch(itemsList(response.data.data))
         })
     }
 
@@ -33,7 +36,7 @@ export default class ToDoMain extends React.Component {
                     </div>
                     <div className="row sideNav">
                         <div className="col-md-6">
-                            <ToDoLeftCol list={this.state.resArr} />
+                            <ToDoLeftCol />
                         </div>
                         <div className="col-md-6">
                             <ToDoRightNav />
