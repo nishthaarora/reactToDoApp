@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
 import Router from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import {todoItem} from '../redux-duckFormat/todoModelReducer';
-import ToDoFooter from './todoFooter';
 import axios from 'axios';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -18,7 +16,7 @@ injectTapEventPlugin();
         item: store.todoModel.item
     }
 })
-export default class toDoModel extends React.Component {
+export default class ToDoModel extends React.Component {
     constructor(context,props) {
         super(context, props);        
     }
@@ -44,7 +42,8 @@ export default class toDoModel extends React.Component {
         <div>
            <MuiThemeProvider>
                 <div> 
-                    <form onSubmit={this.handleSubmit.bind(this)}>
+                    <form className="enterTodo" onSubmit={this.handleSubmit.bind(this)}>
+                        <div className="todoArea">
                         <TextField className="inputField"
                             name="enterTodo"
                             hintText="Hint Text"
@@ -53,10 +52,10 @@ export default class toDoModel extends React.Component {
                             onChange={this.handleChange.bind(this)}
                         />
                         <button>Submit</button>
+                        </div>
                     </form>
                 </div>
             </MuiThemeProvider>
-            <ToDoFooter />
         </div>
         )
     }

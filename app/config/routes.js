@@ -1,11 +1,13 @@
 import React from 'react';
 import {Route, Router, browserHistory, IndexRoute} from 'react-router';
-import toDoModel from '../components/toDoModel';
-// import About from '../components/About'
+import ToDoMain from '../components/ToDoMain';
+import ToDoAbout from '../components/todoAbout';
+import ToDoFunStuff from '../components/todoFunStuff';
 
 module.exports = (
     <Router history={browserHistory}>
-            <Route path="/" component={toDoModel} />
-            {/*<Route path="about" component={About} />*/}
+            <Route path="/" component={ToDoMain} />
+            <Route path="about" component={ToDoAbout} />
+            <Route path="funstuff" component={ToDoFunStuff} />
     </Router>
 );
