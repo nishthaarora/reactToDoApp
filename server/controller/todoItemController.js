@@ -13,11 +13,12 @@ exports.get = (req, res) => {
 
 exports.create = (req, res) => {
     var newItem = new Todo({ description:req.body.newItem, status: req.body.status })
-    newItem.save( (err) => {
+    newItem.save( (err, item) => {
         if(err) {
             res.status('500').json({ status: 'error', message: 'Cannot save new game.'});
         } else {
-            res.send({status: 'ok'});
+            console.log('item', item);
+            res.send({newItem: item});
         }
     })   
 }

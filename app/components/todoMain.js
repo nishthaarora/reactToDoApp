@@ -18,11 +18,6 @@ export default class ToDoMain extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
-        let self = this;
-        this.props.dispatch(fetchPosts(this.props.list));
-    }
-
     render() {
         return(
             <div> 
