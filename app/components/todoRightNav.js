@@ -6,9 +6,11 @@ import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
 import { itemsList } from '../redux-duckFormat/todoMainReducer';
- 
+
+
  @connect((store)=> {
-     return {}
+     return {
+     }
  })
 export default class ToDoRightNav extends React.Component {
     constructor(props) {
@@ -19,7 +21,7 @@ export default class ToDoRightNav extends React.Component {
         let self = this;
         let value = e.target.value.toLowerCase();
         var filteredItems = []
-        console.log(value);
+
         axios.get('/api/get').then((response) => {
             if(value === "all") {
                 self.props.dispatch(itemsList(response.data.data))

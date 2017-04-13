@@ -3,13 +3,15 @@ import ToDoModel from './todoModel';
 import ToDoLeftCol from './todoLeftCol';
 import ToDoSidebar from './todoSidebar';
 import ToDoRightNav from './todoRightNav';
-import { itemsList } from '../redux-duckFormat/todoMainReducer';
+import { itemsList, fetchPosts } from '../redux-duckFormat/todoMainReducer';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
  
  @connect((store)=> {
-     return {}
+     return {
+         list: store.itemsList.list,
+     }
  })
 export default class ToDoMain extends React.Component {
     constructor(props) {
@@ -18,9 +20,7 @@ export default class ToDoMain extends React.Component {
 
     componentDidMount() {
         let self = this;
-        axios.get('/api/get').then( (response) => {
-            self.props.dispatch(itemsList(response.data.data))
-        })
+        this.props.dispatch(fetchPosts(this.props.list));
     }
 
     render() {

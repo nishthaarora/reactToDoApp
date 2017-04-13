@@ -22,7 +22,12 @@ export default class ToDoSidebar extends React.Component {
  handleClick(event) {
      var path = event.currentTarget.textContent;
      path = path.split(' ').join('').toLowerCase();
-     browserHistory.push(path);
+     if(path === 'home') {
+        browserHistory.push('/');    
+     } else {
+        browserHistory.push(path);
+     }
+     
  }
 
  render() {
@@ -38,8 +43,10 @@ export default class ToDoSidebar extends React.Component {
                                 style={{position:'absolute', right:0, top:0, padding: 15, "borderRadius":5, clear:'both' }}>   
                             </button>
                         </MenuItem>
+                        <MenuItem onTouchTap={this.handleToggle.bind(this)} onClick={this.handleClick.bind(this)}>Home</MenuItem>
                         <MenuItem onTouchTap={this.handleToggle.bind(this)} onClick={this.handleClick.bind(this)}>About</MenuItem>
                         <MenuItem onTouchTap={this.handleToggle.bind(this)} onClick={this.handleClick.bind(this)}>Fun Stuff</MenuItem>
+                         
                     </Drawer>                        
                     <button className="glyphicon glyphicon-menu-hamburger hanburger"
                         style={{position:'absolute', left:0, top:0, padding: 15, "borderRadius":5, clear:'both' }}

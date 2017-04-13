@@ -16,7 +16,7 @@ export default class ToDoLeftCol extends React.Component{
         if(this.props.list) {
             listItem = this.props.list
         }
-        console.log(listItem);
+        
         return(
             <div className="leftCol"> 
                 <h1>todo List</h1>

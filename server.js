@@ -17,11 +17,13 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 
 // Express Routes
 app.use('/', express.static('app'));
+app.use('/static', express.static('assets')); 
 app.use('/assets', express.static('dist'))
 require('./server/routes/apiRoutes.js')(app);
-// app.get(`*`, function(req, res) {
-//   res.sendFile('./app/index.html', { root: __dirname });
-// });
+app.get(`*`, function(req, res) {
+  res.sendFile('./app/index.html', { root: __dirname });
+});
+
 
 // Mongoose
 mongoose.Promise = global.Promise;
