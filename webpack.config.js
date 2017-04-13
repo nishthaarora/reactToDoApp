@@ -6,11 +6,9 @@ module.exports = {
     entry: [
         // 'webpack-dev-server/client?http://localhost:8080',
         // 'webpack/hot/only-dev-server',
-        './app/app.js',
+        './app/app.js'
     ],
     output: {
-        publicPath: '/dist',
-        path: __dirname,
         filename: 'dist/bundle.js',
     },
     module: {
