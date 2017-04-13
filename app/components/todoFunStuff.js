@@ -63,7 +63,7 @@ export default class ToDoFunStuff extends React.Component {
                 </div>
                 <div>
                     { this.state.image ? 
-                        this.state.image.map((images) => <img style={{marginTop: 20}} className="col-md-3" src={images} alt=""/> )
+                        this.state.image.map((images,i) => <img key={i} style={{marginTop: 20}} className="col-md-3" src={images} alt=""/> )
                     :
                     null
                     }
